@@ -13,14 +13,13 @@ import org.takes.rq.RqHref;
 import org.takes.rs.RsText;
 import org.takes.rs.RsWithType;
 
-public class App {
+public class TakesExampleApp {
 
     private static final AtomicLong COUNTER = new AtomicLong(0L);
 
     public static void main(String[] args) throws IOException {
         new FtBasic(
             new TkFork(
-                new FkRegex("/", "hello, world!"),
                 new FkRegex(
                     "/message",
                     new JsonResponse()
@@ -38,7 +37,7 @@ public class App {
                 new RsText(
                     String.format(
                         "{\"id\":\"%d\",\"client_timestamp\":\"%s\",\"timestamp\":\"%d\"}",
-                        App.COUNTER.incrementAndGet(),
+                        TakesExampleApp.COUNTER.incrementAndGet(),
                         new RqHref.Smart(req).single("timestamp"),
                         System.currentTimeMillis()
                     )
